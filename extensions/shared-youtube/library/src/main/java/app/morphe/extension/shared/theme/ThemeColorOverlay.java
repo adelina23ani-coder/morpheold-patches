@@ -128,16 +128,11 @@ final class ThemeColorOverlay {
     /**
      * Loads the overlay of a theme into the resources of {@code context}. Without this the overlay
      * is registered but nothing of the app uses it.
-     *
-     * @param dark             If the app shows its dark theme.
-     * @param changeForeground If the overlay of the other theme is also loaded.
      */
-    static void applyTo(Context context, boolean dark, boolean changeForeground) {
+    static void applyTo(Context context) {
         try {
-            applyTo(context, dark);
-            if (changeForeground) {
-                applyTo(context, !dark);
-            }
+            applyTo(context, true);
+            applyTo(context, false);
         } catch (Exception ex) {
             Logger.printException(() -> "Could not apply the overlay of the app", ex);
         }
